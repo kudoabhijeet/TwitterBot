@@ -1,5 +1,6 @@
 import tweepy
 import time
+import logging
 from configapi import init_api
 '''
 # Authenticate to Twitter
@@ -16,8 +17,7 @@ try:
 except:
     print("Authentication Failure")
 '''
-# Create a Test tweet
-#api.update_status("Test Tweet for Bot")
+api.update_status("Test Tweet for Bot")
 
 #Retweet Reply for #DevOpsatUPES 
 for tweet in tweepy.Cursor(api.search,q='#DevOpsatUPES'):
@@ -27,6 +27,6 @@ for tweet in tweepy.Cursor(api.search,q='#DevOpsatUPES'):
         api.update_status('@' +  tweet.user.screen_name + "Cheers!", tweet.id)
 
         print("RT & Reply Success!")
-        time.sleep(5) #sleep for 5 seconds before next RT
+        time.sleep(5) #sleep for 5 seconds before next Task
     except:
         print("Failure!")
